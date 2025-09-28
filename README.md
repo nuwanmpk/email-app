@@ -19,18 +19,21 @@ build binary
     - go build -o email-app ./cmd/server
 run forever with systemd
     - sudo vim /etc/systemd/system/email-app.service
+    
     ```
     [Unit]
     Description=Go Email App
     After=network.target
+
     [Service]
-    ExecStart=/opt/email-app/email-app
-    WorkingDirectory=/opt/email-app
+    ExecStart=/opt/apixlab/email-app/email-app
+    WorkingDirectory=/opt/apixlab/email-app
     Restart=always
     RestartSec=5
-    EnvironmentFile=/etc/email-app.env
+    EnvironmentFile=/opt/apixlab/email-app/configs/.env
     User=www-data
     Group=www-data
+
     [Install]
     WantedBy=multi-user.target
     ```
